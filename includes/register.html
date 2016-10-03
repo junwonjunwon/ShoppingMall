@@ -1,0 +1,31 @@
+<div class="container">
+  <form method="post" action="./controllers/register.php" style="max-width: 600px; margin: 0 auto">
+    <h1>회원가입<small>Register</small></h1>
+    <div class="form-group">
+      <label>이름<input id="name" name="name" class="form-control"></label>
+    </div>
+    <div class="form-group">
+      <label>이메일<input id="email" name="email" class="form-control"></label>
+    </div>
+    <div class="form-group">
+      <label>패스워드<input id="pss" name="pss" type="password" class="form-control"></label>
+    </div>
+    <div class="form-group">
+      <label>성별</label>
+      <div class="radio">
+        <label>
+          <input type="radio" name="gender" id="optionsRadios1" value="option1" checked>
+          남자
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="gender" id="optionsRadios2" value="option2">
+          여자
+        </label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">가입하기</button>
+    <button type="reset" class="btn btn-danger">초기화</button>
+  </form>
+</div>

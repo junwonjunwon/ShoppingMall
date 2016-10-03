@@ -1,0 +1,29 @@
+.header_1 {
+  width: 100%;
+  border-top: 1px solid #c2c2c2;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: rgb(194, 194, 194);
+  border-bottom: 1px solid #c2c2c2;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(194, 194, 194);
+  background: #000;
+  background-color: rgb(0, 0, 0);
+  background-image: none;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-size: auto auto;
+}
+
+ul.right {
+  float: right;
+}
+
+div.form-group > label {
+  width: 100%;
+}
