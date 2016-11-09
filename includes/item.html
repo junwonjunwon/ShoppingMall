@@ -1,0 +1,40 @@
+<?php
+ini_set("display_errors","0");
+$connect = mysqli_connect("localhost","junwon7103","jigle7103","shop");
+mysqli_set_charset($connect,'utf8');
+
+$idx = $_GET['idx'];
+$query = "SELECT * FROM item WHERE idx=$idx";
+$result = mysqli_query($connect, $query);
+while ($temp = mysqli_fetch_assoc($result)) {
+  $item[] = $temp;
+}
+
+if (count($item) == 0) die("<script>alert('존재하지 않는 상품입니다.');history.go(-1)</script>");
+
+$item = $item[0];
+?>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <!--p class="lead">SHOP</p-->
+      <div class="list-group">
+        <a href="#" class="list-group-item">Category 1</a>
+        <a href="#" class="list-group-item">Category 2</a>
+        <a href="#" class="list-group-item">Category 3</a>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="thumbnail">
+        <img class="img-responsive" src="/image/<?php echo $item['image']; ?>">
+        <div class="caption-full">
+          <h4 class="pull-right"><?php echo $item['price']; ?> &#8361;</h4>
+          <h4><a href="#;" onclick="return false"><?php echo $item['name']; ?></a></h4>
+          <p>
+            <?php echo $item['info']; ?>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

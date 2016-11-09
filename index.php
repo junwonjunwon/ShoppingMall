@@ -1,10 +1,15 @@
 <?php
 $page = isset($_GET['page']) ? $_GET['page'] : "home";
+if($page == "home")  echo "<title>Welcome TARK!</title>";
+else if ($page == "register") echo "<title>회원가입</title>";
+else if ($page == "login") "<title>로그인</title>";
+else if ($page == "upload")"<title>upload</title>";
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
+
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +17,6 @@ $page = isset($_GET['page']) ? $_GET['page'] : "home";
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Shop Homepage - Start Bootstrap Template</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +56,6 @@ $page = isset($_GET['page']) ? $_GET['page'] : "home";
   $(document).ready(function() {
     var params = getQueryParams(location.search);
     if (params.page === undefined) params.page = "home";
-    console.log(params);
     $("li#" + params.page).addClass("active");
   });
   </script>

@@ -1,0 +1,20 @@
+    <title>로그인</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  </head>
+  <body>
+   <div class="container">
+     <form action="./controllers/login.php" method="POST" style="max-width: 600px; margin: 0 auto">
+
+      <h1>로그인<small>login</small></h1>
+      <div class="form-group">
+        <lable for="email">이메일</label>
+        <input id="email" name = "email" class="form-control">
+      </div>
+      <div class="form-group">
+        <lable for="pss">패스워드</label>
+        <input id="pss" name = "password" type="password" class="form-control">
+      </div>
+      <div class="form-group">
+      <button type="submit" class="btn btn-primary">확인</button>
+      <button type="reset" class="btn btn-danger">초기화</button>
+    </form>

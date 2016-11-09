@@ -1,0 +1,27 @@
+<div class="container">
+  <form method="post" action="/controllers/image.php" style="max-width: 600px; margin: 0 auto" role="form" enctype="multipart/form-data">
+    <div class="form-group">
+      <label>
+        <h3>제품명</h3>
+        <input type="text" id="f_name" class="form-control" name="name" placeholder="제품명">
+      </label>
+    </div>
+    <div class="form-group">
+      <label>
+        <h3>가격</h3>
+        <input type="number" id="f_name" class="form-control" name="price" placeholder="가격">
+      </label>
+    </div>
+    <div class="form-group">
+      <label>
+        <h3>상품 상세정보</h3>
+        <textarea class="form-control" style="resize: none; height: 300px;" name="info"></textarea>
+      </label>
+    </div>
+    <div class="form-group">
+      <h3>이미지 업로드</h3>
+      <label><input type="file" id="f_info" name="info"></label>
+    </div>
+    <button type="submit" class="btn btn-default">업로드</button>
+  </form>
+</div>
