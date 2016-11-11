@@ -7,7 +7,7 @@ session_start();
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
+        <span class="sr-only">T33</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -20,9 +20,15 @@ session_start();
         <li id="home">
           <a href="./">Home</a>
         </li>
-        <li id="upload">
-          <a href="./?page=upload">Upload</a>
-        </li>
+        <?php
+        if(isset($_SESSION['name'])&&(isset($_SESSION['idx']) && $_SESSION['manager'])){
+          ?>
+          <li id="upload">
+            <a href="./?page=upload">Upload</a>
+          </li>
+          <?php
+        }
+        ?>
       </ul>
       <ul class="nav navbar-nav right">
         <?php

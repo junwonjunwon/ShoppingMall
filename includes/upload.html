@@ -1,3 +1,6 @@
+<?php
+if (!isset($_SESSION['idx']) && !$_SESSION['manager']) die("<script>alert('상품 업로드 권한이 없습니다');history.go(-1)</script>");
+?>
 <div class="container">
   <form method="post" action="/controllers/image.php" style="max-width: 600px; margin: 0 auto" role="form" enctype="multipart/form-data">
     <div class="form-group">
@@ -22,6 +25,7 @@
       <h3>이미지 업로드</h3>
       <label><input type="file" id="f_info" name="info"></label>
     </div>
+
     <button type="submit" class="btn btn-default">업로드</button>
   </form>
 </div>

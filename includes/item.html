@@ -26,7 +26,10 @@ $item = $item[0];
     </div>
     <div class="col-md-9">
       <div class="thumbnail">
-        <img class="img-responsive" src="/image/<?php echo $item['image']; ?>">
+        <img src="/image/<?php
+        if (file_exists($_SERVER['DOCUMENT_ROOT']."/image/".$item['image'])) echo $item['image'];
+        else echo "noImage.jpg";
+        ?>">
         <div class="caption-full">
           <h4 class="pull-right"><?php echo $item['price']; ?> &#8361;</h4>
           <h4><a href="#;" onclick="return false"><?php echo $item['name']; ?></a></h4>

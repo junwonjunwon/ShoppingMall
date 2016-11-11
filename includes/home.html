@@ -4,25 +4,31 @@ $connect = mysqli_connect("localhost","junwon7103","jigle7103","shop");
 mysqli_set_charset($connect,'utf8');
 
 $query = "SELECT count(*) AS num FROM item";
-$num = mysqli_fetch_row(mysqli_query($connect, $query));
-$num = $num['num'];
-$query = $num < 6 ? "SELECT * FROM item" : "SELECT * FROM item LIMIT $num-7, 6";
+$num = mysqli_fetch_assoc(mysqli_query($connect, $query));
+$num = $num["num"];
+$query = $num < 6 ? "SELECT * FROM item" : "SELECT * FROM item LIMIT ".($num-6).", 6";
 $result = mysqli_query($connect, $query);
 while ($temp = mysqli_fetch_assoc($result)) {
   $temp['info'] = preg_replace("/<br>.+$/", "...", $temp['info']);
   $temp['info'] = strlen($temp['info']) > 100 ? substr($temp['info'], 0, 30)."..." : $temp['info'];
   $item[] = $temp;
 }
-print_r($item);
+
+$query = "SELECT image FROM item";
+$result = mysqli_query($connect, $query);
+while ($temp = mysqli_fetch_assoc($result)) {
+  if (preg_match("/^\d+[.].+$/", $temp['image']))
+  $image[] = "/image/".$temp['image'];
+}
 ?>
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <p class="lead">SHOP</p>
+      <p class="lead">Category</p>
       <div class="list-group">
-        <a href="#" class="list-group-item">male</a>
-        <a href="#" class="list-group-item">female</a>
-        <a href="#" class="list-group-item">unisex</a>
+        <a href="#" class="list-group-item">Male</a>
+        <a href="#" class="list-group-item">Female</a>
+        <a href="#" class="list-group-item">Unisex</a>
       </div>
     </div>
     <div class="col-md-9">
@@ -35,15 +41,15 @@ print_r($item);
               <li data-target="#carousel-example-generic" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
-              <div class="item active">
-                <img class="slide-image" src="http://placehold.it/800x300" alt="">
-              </div>
-              <div class="item">
-                <img class="slide-image" src="http://placehold.it/800x300" alt="">
-              </div>
-              <div class="item">
-                <img class="slide-image" src="http://placehold.it/800x300" alt="">
-              </div>
+              <?php
+              for ($i = 0; $i < count($image); $i++) {
+                ?>
+                <div class="item <?php if ($i == 0) echo "active"; ?>">
+                  <img class="slide-image" src="<?php echo $image[$i]; ?>" alt="">
+                </div>
+                <?php
+              }
+              ?>
             </div>
             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
               <span class="glyphicon glyphicon-chevron-left"></span>
@@ -62,7 +68,10 @@ print_r($item);
           ?>
           <div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail">
-              <img src="/image/<?php echo $item[$i]['image']; ?>">
+              <img src="/image/<?php
+              if (file_exists($_SERVER['DOCUMENT_ROOT']."/image/".$item[$i]['image'])) echo $item[$i]['image'];
+              else echo "noImage.jpg";
+              ?>">
               <div class="caption">
                 <h4 class="pull-right"><?php echo $item[$i]['price'] ?> &#8361;</h4>
                 <h4><a href="/?page=item&idx=<?php echo $item[$i]['idx'] ?>"><?php echo $item[$i]['name'] ?></a>
